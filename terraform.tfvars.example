@@ -1,0 +1,27 @@
+argocd_namespace = "argocd"
+
+# Leave empty to auto-detect from ~/.kube/config
+# kube_config_context = "my-cluster"
+
+# Or use explicit credentials (set set_context = false)
+# kube_host                   = "https://api.my-cluster.com:6443"
+# kube_token                  = "my-token"
+# kube_cluster_ca_certificate = "base64-encoded-ca-cert"
+
+ingress_enabled      = false
+ingress_host         = "argocd.example.com"
+ingress_class_name   = "traefik"
+tls_enabled          = false
+tls_secret_name      = "argocd-tls"
+
+# ArgoCD version
+argocd_helm_chart_version = "7.7.16"
+
+# Replicas for high availability
+server_deployment_replicas        = 1
+repo_server_replicas              = 1
+application_controller_replicas   = 1
+redis_ha_enabled                  = false
+
+# Wait for pods to be ready
+wait_for_deploy = true

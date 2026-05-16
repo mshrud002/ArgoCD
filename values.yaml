@@ -1,0 +1,47 @@
+global:
+  logging:
+    format: text
+    level: info
+
+server:
+  ingress:
+    enabled: ${ingress_enabled}
+    ingressClassName: ${ingress_class_name}
+    hostname: ${ingress_host}
+    tls: ${tls_enabled}
+    annotations:
+%{ for k, v in ingress_annotations ~}
+      ${k}: ${v}
+%{ endfor ~}
+  extraArgs:
+    - --insecure
+  log:
+    format: text
+    level: info
+
+controller:
+  log:
+    format: text
+    level: info
+
+repoServer:
+  log:
+    format: text
+    level: info
+
+configs:
+  params:
+    server.insecure: "true"
+  cm:
+    create: true
+  rbac:
+    create: true
+    policy.default: role:readonly
+    policy.csv: ""
+    scopes: "[groups]"
+
+redis:
+  enabled: true
+
+redis-ha:
+  enabled: ${redis_ha_enabled}
