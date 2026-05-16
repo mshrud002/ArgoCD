@@ -23,12 +23,12 @@ resource "helm_release" "argocd" {
 
   values = [
     templatefile(var.argocd_values_file, {
-      ingress_enabled      = var.ingress_enabled
-      ingress_class_name   = var.ingress_class_name
-      ingress_host         = var.ingress_host
-      ingress_annotations  = var.ingress_annotations
-      tls_enabled          = var.tls_enabled
-      redis_ha_enabled     = var.redis_ha_enabled
+      ingress_enabled     = var.ingress_enabled
+      ingress_class_name  = var.ingress_class_name
+      ingress_host        = var.ingress_host
+      ingress_annotations = var.ingress_annotations
+      tls_enabled         = var.tls_enabled
+      redis_ha_enabled    = var.redis_ha_enabled
     })
   ]
 
